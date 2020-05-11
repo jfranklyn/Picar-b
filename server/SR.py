@@ -51,3 +51,4 @@ if __name__ == '__main__':
     commandGenOut = run()
     print(commandGenOut)
     time.sleep(1)
+

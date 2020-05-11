@@ -10,6 +10,7 @@ import argparse
 import threading
 
 # LED strip configuration:
+
 LED_COUNT      = 3       # Number of LED pixels.
 LED_PIN        = 12      # GPIO pin connected to the pixels (18 uses PWM!).
 #LED_PIN        = 10     # GPIO pin connected to the pixels (10 uses SPI /dev/spidev0.0).
@@ -21,7 +22,6 @@ LED_CHANNEL    = 0       # set to '1' for GPIOs 13, 19, 41, 45 or 53
 
 ledfunc = ''
 
-
 def wheel(pos):
     """Generate rainbow colors across 0-255 positions."""
     if pos < 85:
@@ -32,7 +32,6 @@ def wheel(pos):
     else:
         pos -= 170
         return Color(0, pos * 3, 255 - pos * 3)
-
 
 class LED:
     def __init__(self):
@@ -87,9 +86,8 @@ class LED:
         for i in range(6, 12):
             self.strip.setPixelColor(i, color)
             self.strip.show()
-
-
 led = LED()
+
 class LED_ctrl(threading.Thread):
     def __init__(self, *args, **kwargs):
         super(LED_ctrl, self).__init__(*args, **kwargs)
@@ -155,7 +153,6 @@ class LED_ctrl(threading.Thread):
         self.__flag.set()
         self.__running.clear()
 
-
 if __name__ == '__main__':
     led = LED()
     # ledthread = LED_ctrl()
@@ -164,10 +161,3 @@ if __name__ == '__main__':
     #     led.rainbow()
     led.colorWipe(255,255,255)
     time.sleep(1)
-
-    # ledfunc = 'police'
-    # ledthread.resume()
-
-    # time.sleep(2)
-    # ledfunc = ''
-    # ledthread.pause()

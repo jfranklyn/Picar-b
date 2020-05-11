@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 # File name   : move.py
 # Description : Control Motor
+
 # Product     : PiCar-C
 # Website     : www.adeept.com
 # Author      : William
 # Date        : 2019/11/21
+
 import time
 import RPi.GPIO as GPIO
 
@@ -52,7 +54,6 @@ def setup():#Motor initialization
 	except:
 		pass
 
-
 def motor_A(direction, speed):#Motor 2 positive and negative rotation
 	if direction == Dir_backward:
 		GPIO.output(Motor_B_Pin1, GPIO.HIGH)
@@ -90,7 +91,6 @@ def move(speed, direction):   # 0 < radius <= 1
 		motorStop()
 	else:
 		pass
-
 
 def destroy():
 	motorStop()

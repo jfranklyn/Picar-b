@@ -4,6 +4,7 @@
 # Website     : www.adeept.com
 # Author      : William
 # Date        : 2019/11/21
+
 import psutil
 
 def get_cpu_tempfunc():

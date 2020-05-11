@@ -14,6 +14,7 @@ line_pin_right = 19
 line_pin_middle = 16
 line_pin_left = 20
 
+'''
 def setup():
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
@@ -21,6 +22,7 @@ def setup():
     GPIO.setup(line_pin_middle,GPIO.IN)
     GPIO.setup(line_pin_left,GPIO.IN)
     #motor.setup()
+
 
 led = LED.LED()
 turn_status = 0
@@ -32,6 +34,7 @@ backing = 0
 last_turn = 0
 def run():
     global turn_status, speed, angle_rate, color_select, led, check_true_out, backing, last_turn
+
     status_right = GPIO.input(line_pin_right)
     status_middle = GPIO.input(line_pin_middle)
     status_left = GPIO.input(line_pin_left)
@@ -96,7 +99,7 @@ if __name__ == '__main__':
     try:
         setup()
         move.setup()
-        
+
         while 1:
             run()
             

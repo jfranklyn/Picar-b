@@ -9,22 +9,23 @@ servo.servo_init()
 import socket
 import time
 import threading
-import move
+import GUImove as move
 import Adafruit_PCA9685
 import os
 import FPV
 import info
 
 import LED
-import findline
+
+import GUIfindline as findline
 import switch
 import ultra
 import PID
-from mpu6050 import mpu6050
 
 import random
 
-SR_dect = 0
+SR_dect = 1
+
 appConnection = 1
 Blockly = 0
 
@@ -49,6 +50,7 @@ if appConnection:
 
 
 MPU_connection = 1
+
 try:
 	sensor = mpu6050(0x68)
 	print('mpu6050 connected.')
@@ -234,7 +236,8 @@ class SR_ctrl(threading.Thread):
 		while self.__running.isSet():
 			self.__flag.wait()
 			if SR_mode:
-				voice_command = SR.run()
+
+        voice_command = SR.run()
 				if voice_command == 'forward':
 					turn.turnMiddle()
 					move.move(speed_set, 'forward')
