@@ -125,34 +125,37 @@ def opencv_r():
 	global frame_num, source, HSVimg
 	while True:
 		try:
-                        #print ("Video Connected1")
-                        frame = footage_socket.recv_string()
-                        img = base64.b64decode(frame)
-                        npimg = np.frombuffer(img, dtype=np.uint8)
-                        source = cv2.imdecode(npimg, 1)
-                        cv2.putText(source,('PC FPS: %s'%fps),(40,20), font, 0.5,(255,255,255),1,cv2.LINE_AA)
-        
+		    frame = footage_socket.recv_string()
+			  img = base64.b64decode(frame)
+			  npimg = np.frombuffer(img, dtype=np.uint8)
+			  source = cv2.imdecode(npimg, 1)
+			  cv2.putText(source,('PC FPS: %s'%fps),(40,20), font, 0.5,(255,255,255),1,cv2.LINE_AA)
 			
-                        try:
-                                cv2.putText(source,('CPU Temperature: %s'%CPU_TEP),(370,350), font, 0.5,(128,255,128),1,cv2.LINE_AA)
-                                cv2.putText(source,('CPU Usage: %s'%CPU_USE),(370,380), font, 0.5,(128,255,128),1,cv2.LINE_AA)
-                                cv2.putText(source,('RAM Usage: %s'%RAM_USE),(370,410), font, 0.5,(128,255,128),1,cv2.LINE_AA)
+			  try:
+				    cv2.putText(source,('CPU Temperature: %s'%CPU_TEP),(370,350), font, 0.5,(128,255,128),1,cv2.LINE_AA)
+				    cv2.putText(source,('CPU Usage: %s'%CPU_USE),(370,380), font, 0.5,(128,255,128),1,cv2.LINE_AA)
+				    cv2.putText(source,('RAM Usage: %s'%RAM_USE),(370,410), font, 0.5,(128,255,128),1,cv2.LINE_AA)
 
-                                cv2.rectangle(source, (167, 320), (473, 330), (255,255,255))
+				    cv2.rectangle(source, (167, 320), (473, 330), (255,255,255))
 
-                                DIR_show = int(CAR_DIR)
-                                if DIR_show > 0:
-					cv2.rectangle(source, ((320-DIR_show), 323), (320, 327), (255,255,255))
-                                elif DIR_show < 0:
-					cv2.rectangle(source, (320, 323), ((320-DIR_show), 327), (255,255,255))
+				    DIR_show = int(CAR_DIR)
+				    if DIR_show > 0:
+					      cv2.rectangle(source, ((320-DIR_show), 323), (320, 327), (255,255,255))
+				    elif DIR_show < 0:=======
+			      frame = footage_socket.recv_string()
+			      img = base64.b64decode(frame)
+			      npimg = np.frombuffer(img, dtype=np.uint8)
+			      source = cv2.imdecode(npimg, 1)
+			      cv2.putText(source,('PC FPS: %s'%fps),(40,20), font, 0.5,(255,255,255),1,cv2.LINE_AA)
 
+					  cv2.rectangle(source, (320, 323), ((320-DIR_show), 327), (255,255,255))
 
 				#cv2.line(source,(320,240),(260,300),(255,255,255),1)
 				#cv2.line(source,(210,300),(260,300),(255,255,255),1)
 
 				#cv2.putText(source,('%sm'%ultra_data),(210,290), font, 0.5,(255,255,255),1,cv2.LINE_AA)
-			except:
-				pass
+			  except:
+				    pass
 			
 			#cv2.putText(source,('%sm'%ultra_data),(210,290), font, 0.5,(255,255,255),1,cv2.LINE_AA)
 			cv2.imshow("Stream", source)
@@ -175,12 +178,10 @@ fps_threading.start()									 #Thread starts
 
 video_threading=thread.Thread(target=video_thread)		 #Define a thread for FPV and OpenCV
 video_threading.setDaemon(True)							 #'True' means it is a front thread,it would close when the mainloop() closes
-video_threading.start()
-print ("Video Connected2")
-#Thread starts
+
+video_threading.start()									 #Thread starts
 
 ########>>>>>VIDEO<<<<<########
-
 
 def replace_num(initial,new_num):   #Call this function to replace data in '.txt' file
 	newline=""
@@ -388,7 +389,7 @@ def socket_connect():	 #Call this function to connect with the server
 			info_threading=thread.Thread(target=Info_receive)		 #Define a thread for FPV and OpenCV
 			info_threading.setDaemon(True)							 #'True' means it is a front thread,it would close when the mainloop() closes
 			info_threading.start()									 #Thread starts
-                        print ("Video Started")
+
 			video_threading=thread.Thread(target=opencv_r)		 #Define a thread for FPV and OpenCV
 			video_threading.setDaemon(True)							 #'True' means it is a front thread,it would close when the mainloop() closes
 			video_threading.start()									 #Thread starts

@@ -16,6 +16,7 @@ import FPV
 import info
 
 import LED
+
 import GUIfindline as findline
 import switch
 import ultra
@@ -24,6 +25,7 @@ import PID
 import random
 
 SR_dect = 1
+
 appConnection = 1
 Blockly = 0
 
@@ -31,7 +33,6 @@ if SR_dect:
 	try:
 		import SR
 		SR_dect = 1
-		print("Speech Detect ON")
 	except:
 		SR_dect = 0
 		pass
@@ -49,6 +50,13 @@ if appConnection:
 
 
 MPU_connection = 1
+
+try:
+	sensor = mpu6050(0x68)
+	print('mpu6050 connected.')
+except:
+	MPU_connection = 0
+	print('mpu6050 disconnected.')
 
 servo_speed  = 5
 functionMode = 0
@@ -228,8 +236,8 @@ class SR_ctrl(threading.Thread):
 		while self.__running.isSet():
 			self.__flag.wait()
 			if SR_mode:
-				print("SR_mode running")
-				voice_command = SR.run()
+
+        voice_command = SR.run()
 				if voice_command == 'forward':
 					turn.turnMiddle()
 					move.move(speed_set, 'forward')

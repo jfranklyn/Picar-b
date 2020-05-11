@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 # File name   : Ultrasonic.py
 # Description : Detection distance and tracking with ultrasonic
-# Website     : www.gewbot.com
+
+# Website     : www.adeept.com
 # Author      : William
-# Date        : 2019/02/23
+# Date        : 2019/11/21
+
 import RPi.GPIO as GPIO
 import time
 
@@ -15,11 +17,8 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(Tr, GPIO.OUT,initial=GPIO.LOW)
 GPIO.setup(Ec, GPIO.IN)
 
-
 def checkdist():       #Reading distance
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(Tr, GPIO.OUT,initial=GPIO.LOW)
-    GPIO.setup(Ec, GPIO.IN)
+
     GPIO.output(Tr, GPIO.HIGH)
     time.sleep(0.000015)
     GPIO.output(Tr, GPIO.LOW)
@@ -30,7 +29,6 @@ def checkdist():       #Reading distance
         pass
     t2 = time.time()
     return round((t2-t1)*340/2,2)
-    #return (t2-t1)*340/2
 
 # def checkdist():       #Reading distance
 #     GPIO.output(Tr, GPIO.HIGH)
