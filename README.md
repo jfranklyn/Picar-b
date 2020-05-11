@@ -1,12 +1,14 @@
 # Adeept 4WD Smart Car Kit for Raspberry Pi PiCar-B
 
 ## About This Product
+This is the latest version of the picar-b code. I'm running the client on Windows 10 and the server on Raspberry Pi 4B, running Raspbian version 10. At this point the following is not working:
+Camera does not display on Windows
+Voice commands not working
+Line follow not working
 
-## About Adeept
+The following functions are working:
+The car drives properly
+The servos work properly
+The lights work properly
 
-Adeept is a technical service team of open source software and hardware. Dedicated to applying the Internet and the latest industrial technology in open source area, we strive to provide best hardware support and software service for general makers and electronic enthusiasts around the world. We aim to create infinite possibilities with sharing. No matter what field you are in, we can lead you into the electronic world and bring your ideas into reality.
 
-## Contact Info
- Technical Support:  support@adeept.com<br/>
- Customer Service:   service@adeept.com<br/>
- Website:            www.adeept.com<br/>
